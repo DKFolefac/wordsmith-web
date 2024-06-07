@@ -4,7 +4,7 @@ WORKDIR /myapp
  # Adjust path based on your Go project structure
 COPY . .
 RUN go mod download
-RUN go build -o my-app ./myapp
+RUN go build -o my-app ./
 
 FROM alpine:latest
 COPY --from=builder /go/bin/my-app /app/myapp
