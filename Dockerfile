@@ -1,4 +1,4 @@
-FROM golang:1.19-alpine AS builder
+FROM golang:1.23-alpine AS builder
 
 WORKDIR /myapp  # Adjust path based on your Go project structure
 COPY . .
