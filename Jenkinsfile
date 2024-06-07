@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build Go Web App') {
             steps {
-                sh 'go build -o my-app ./cmd/myapp' // Adjust command and output file
+                sh 'go build -o my-app ./myapp' // Adjust command and output file
             }
         } 
 

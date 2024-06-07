@@ -3,7 +3,7 @@ FROM golang:1.19-alpine AS builder
 WORKDIR /myapp  # Adjust path based on your Go project structure
 COPY . .
 RUN go mod download
-RUN go build -o my-app ./cmd/myapp
+RUN go build -o my-app ./myapp
 
 FROM alpine:latest
 COPY --from=builder /go/bin/my-app /app/myapp
