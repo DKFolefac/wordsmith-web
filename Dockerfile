@@ -9,7 +9,8 @@ FROM alpine:latest
 COPY --from=builder /go/bin/my-app /app/myapp
 WORKDIR /app
 
-ENV WEB_APP_PORT=80 # Optional: Listening port
+ENV WEB_APP_PORT=80 
+# Optional: Listening port
 EXPOSE $WEB_APP_PORT
 
 # Configure database connection (replace with your approach)
