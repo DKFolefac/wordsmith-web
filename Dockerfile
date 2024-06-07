@@ -14,7 +14,8 @@ ENV WEB_APP_PORT=80
 EXPOSE $WEB_APP_PORT
 
 # Configure database connection (replace with your approach)
-ENV DB_HOST=postgres  # Assuming PostgreSQL container name is "postgres"
+ENV DB_HOST=postgres  
+# Assuming PostgreSQL container name is "postgres"
 ENV DB_PORT=5432
 ENV DB_USER=userw
 ENV DB_PASSWORD=passwordw
