@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build Go Web App') {
             steps {
-                sh 'go mod init wordweb'
+               // sh 'go mod init wordweb'
                 sh 'go build -o my-app ./' // Adjust command and output file
             }
         } 
