@@ -1,6 +1,7 @@
 FROM golang:1.23-alpine AS builder
 
-WORKDIR /myapp  # Adjust path based on your Go project structure
+WORKDIR /myapp 
+ # Adjust path based on your Go project structure
 COPY . .
 RUN go mod download
 RUN go build -o my-app ./myapp
