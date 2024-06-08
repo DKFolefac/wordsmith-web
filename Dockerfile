@@ -7,7 +7,7 @@ RUN go mod download
 RUN go build -o my-app ./
 
 FROM alpine:latest
-COPY --from=builder ./my-app /app/myapp
+COPY --from=builder /myapp/my-app /app/myapp
 WORKDIR /app
 
 ENV WEB_APP_PORT=80 
