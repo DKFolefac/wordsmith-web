@@ -5,7 +5,7 @@ ARG TARGETARCH
  # Adjust path based on your Go project structure
 COPY dispatcher.go .
 
-RUN GOOS=linux GOARCH=$TARGETARCH go build dispatcher.go 
+RUN go build dispatcher.go 
 
 FROM alpine:latest
 WORKDIR /usr/local/app
