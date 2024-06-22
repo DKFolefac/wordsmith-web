@@ -6,12 +6,12 @@ pipeline {
     }
 
     stages {
-        stage('Build Go Web App') {
-            steps {
+        //stage('Build Go Web App') {
+            //steps {
                // sh 'go mod init wordweb'
                 //sh 'go build -o my-app ./' // Adjust command and output file
-            }
-        } 
+           // }
+        //} 
 
         stage('Build Docker Image for Go Web App') {
             steps {
