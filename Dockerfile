@@ -1,18 +1,19 @@
-FROM golang:1.21-alpine AS builder
+FROM golang:alpine as builder
 
-WORKDIR /myapp 
+WORKDIR /usr/local/app
+ARG TARGETARCH
  # Adjust path based on your Go project structure
-COPY . .
-RUN go mod download
-RUN go build -o my-app ./
+COPY dispatcher.go .
+
+RUN GOOS=linux GOARCH=$TARGETARCH go build dispatcher.go 
 
 FROM alpine:latest
-COPY --from=builder /myapp/my-app /app/myapp
-WORKDIR /app
+WORKDIR /usr/local/app
+COPY --from=builder /usr/local/app/dispatcher ./
+COPY static ./static/ 
 
-ENV WEB_APP_PORT=80 
 # Optional: Listening port
-EXPOSE $WEB_APP_PORT
+EXPOSE 80
 
 # Configure database connection (replace with your approach)
 ENV DB_HOST=postgres  
@@ -23,4 +24,4 @@ ENV DB_PASSWORD=passwordw
 ENV DB_NAME=databasew
 
 # Entrypoint (replace with your logic)
-ENTRYPOINT ["/app/myapp", "-http", ":$WEB_APP_PORT"]
+CMD ["/usr/local/app/dispatcher"]
