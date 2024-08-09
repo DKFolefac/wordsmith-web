@@ -12,7 +12,17 @@ pipeline {
                 //sh 'go build -o my-app ./' // Adjust command and output file
            // }
         //} 
+         stage ('sonarqube analysis'){
+            environment {
+                scannerHome = tool "sonarscanner"
+            }
+            steps{
+                withSonarQubeEnv('sonarscanner') {
+                  sh "${scannerHome}/bin/sonar-scanner"
+                }    
+            }
 
+        }
         stage('Build Docker Image for Go Web App') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
